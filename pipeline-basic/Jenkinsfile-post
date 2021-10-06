@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+    // post section is conventionally placed at the bottom of pipeline
+    post { 
+        always { 
+            // Run steps in this post section regardless of the 
+            // completion status of the Pipeline’s or stage’s run.
+            echo 'I will always say Hello again!'
+        }
+        failure {
+            // Run steps in this post section if the status of 
+            // the Pipeline’s or stage’s run is 'failed'.
+            echo 'Emailed relevant team regarding pipeline failure'
+            mail to: team@gmail.com, subject: 'The Pipeline failed.'
+        }
+    }
+}
