@@ -18,7 +18,7 @@ pipeline {
             // Run steps in this post section if the status of 
             // the Pipeline’s or stage’s run is 'failed'.
             echo 'Emailed relevant team regarding pipeline failure'
-            mail to: 'team@gmail.com', subject: 'The Pipeline failed.'
+            mail to: 'team@gmail.com', subject: 'The Pipeline failed.', body: 'Some content'
         }
     }
 }
