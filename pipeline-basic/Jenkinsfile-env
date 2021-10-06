@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    environment{
+        verTest = '777'
+        myCred = credentials('MyGitHub')
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} with ${env.verTest}"
+                echo "${env.myCred}"
+            }
+        }
+    }
+}
